@@ -1,134 +1,134 @@
 create
-database StudentSystemDao;
+    database StudentSystemDao;
 
 
 use
-StudentSystemDao;
+    StudentSystemDao;
 create table tb_Department
 (
     #所属院系表
-        Department_ID varchar(30) primary key,
+    Department_ID   varchar(30) primary key,
     #院系编号
-        Department_Name nvarchar(50) unique not null #院系名
+    Department_Name nvarchar(50) unique not null #院系名
 );
 
 
 use
-StudentSystemDao;
+    StudentSystemDao;
 create table tb_Major
 (
     #专业表
-        Major_ID varchar(30) primary key,
+    Major_ID      varchar(30) primary key,
     #专业编号
-        Major_Name nvarchar(50) unique not null,
+    Major_Name    nvarchar(50) unique not null,
     #专业名称
-        Department_ID varchar(30) not null,
+    Department_ID varchar(30)         not null,
     #所属院系ID
-        foreign key (Department_ID) references tb_Department(Department_ID) #所属院系设置为院系表的外键
+    foreign key (Department_ID) references tb_Department (Department_ID) #所属院系设置为院系表的外键
 );
 
 
 
 use
-StudentSystemDao;
+    StudentSystemDao;
 create table tb_Classe
 (
     #班级表
-        Classe int not null,
+    Classe   int         not null,
     #班级
-        Grade int not null,
+    Grade    int         not null,
     #年级
-        Major_ID varchar(30) not null,
+    Major_ID varchar(30) not null,
     #专业编号
-        primary key(Classe,Grade,Major_ID) #班级，年级和专业编号共为主键
+    primary key (Classe, Grade, Major_ID) #班级，年级和专业编号共为主键
 );
 
 
 
 use
-StudentSystemDao;
+    StudentSystemDao;
 create table tb_Student
 (
     #学生表
-        Student_Id varchar(30) primary key,
+    Student_Id      varchar(30) primary key,
     #学生学号
-        Student_Name nvarchar(50) not null,
+    Student_Name    nvarchar(50)          not null,
     #学生姓名
-        Student_Sex nchar(1) default '男' not null check (StudentSex in ('男','女')),
+    Student_Sex     nchar(1) default '男' not null check (StudentSex in ('男', '女')),
     #学生性别
-        Grade int not null,
+    Grade           int                   not null,
     #年级
-        Classe int not null,
+    Classe          int                   not null,
     #班级
-        Major_ID varchar(30) not null,
+    Major_ID        varchar(30)           not null,
     #专业编号
-        Major_Name nvarchar(50) not null,
+    Major_Name      nvarchar(50)          not null,
     #专业名称
-        Department_ID varchar(30) not null,
+    Department_ID   varchar(30)           not null,
     #所属院系ID
-        Department_Name nvarchar(50) not null,
+    Department_Name nvarchar(50)          not null,
     #院系名称
-        foreign key (Department_ID) references tb_Department(Department_ID),
+    foreign key (Department_ID) references tb_Department (Department_ID),
     #所属院系编号设置为外键
-        foreign key (Major_ID) references tb_Major(Major_ID),
+    foreign key (Major_ID) references tb_Major (Major_ID),
     #专业编号设置为外键
-        foreign key (Department_Name) references tb_Department(Department_Name),
+    foreign key (Department_Name) references tb_Department (Department_Name),
     #所属院系名称设置为外键
-        foreign key (Major_Name) references tb_Major(Major_Name) #专业名称设置为外键
+    foreign key (Major_Name) references tb_Major (Major_Name) #专业名称设置为外键
 );
 
 
 
 use
-StudentSystemDao;
+    StudentSystemDao;
 create table tb_User
 (
     #用户表
-        User_name nvarchar(30) primary key,
+    User_name nvarchar(30) primary key,
     #用户名
-        Password_ varchar(30) not null,
+    Password_ varchar(30) not null,
     #密码
-        IsLogin bit not null DEFAULT 0 #是否重复登陆
+    IsLogin   bit         not null DEFAULT 0 #是否重复登陆
 
 );
 
 
 
 use
-StudentSystemDao;
+    StudentSystemDao;
 create table tb_Course
 (
     #课程表
-        Course_Name nvarchar(50) not null,
+    Course_Name nvarchar(50) not null,
     #课程名称
-        Major_ID varchar(30) not null,
+    Major_ID    varchar(30)  not null,
     #所属专业编号
-        foreign key (Major_ID) references tb_Major(Major_ID),
+    foreign key (Major_ID) references tb_Major (Major_ID),
     #专业编号设置为专业表的外键
-        Grade int not null,
+    Grade       int          not null,
     #年级
-        primary key(Course_Name,Major_ID,Grade) #课程名称，专业，年级共为主键
+    primary key (Course_Name, Major_ID, Grade) #课程名称，专业，年级共为主键
 );
 
 
 
 use
-StudentSystemDao;
+    StudentSystemDao;
 create table tb_Score
 (
     #成绩表
-          Student_Id varchar(30) not null,
+    Student_Id   varchar(30)  not null,
     #学生ID
-          Student_Name nvarchar(50) not null,
+    Student_Name nvarchar(50) not null,
     #学生姓名
-          Course_Name varchar(30) not null,
+    Course_Name  varchar(30)  not null,
     #课程名称
-        primary key(Course_Name,Student_Id),
+    primary key (Course_Name, Student_Id),
     #学生ID和课程名称共同组成主键
-        foreign key (Student_Id) references tb_Student(Student_Id),
+    foreign key (Student_Id) references tb_Student (Student_Id),
     #学生ID设置为学生表的外键
-        foreign key (Course_Name) references tb_Course(Course_Name),
-    Score dec(4, 1) default null check (Score between 0.0 and 100.0) #成绩在0到100之间
+    foreign key (Course_Name) references tb_Course (Course_Name),
+    Score        dec(4, 1) default null check (Score between 0.0 and 100.0) #成绩在0到100之间
 );
 
 
