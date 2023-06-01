@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 public class WindowUtil {
-	 //设置窗体居中
+    //设置窗体居中
     public static void setFrameCenter(Container c) {
         //获取工具对象
         Toolkit tk = Toolkit.getDefaultToolkit();
