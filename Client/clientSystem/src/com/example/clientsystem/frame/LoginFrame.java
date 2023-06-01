@@ -35,27 +35,27 @@ public class LoginFrame extends JFrame {
         this.setLayout(null);//设置为空布局。
         this.setSize(400, 300);//设置大小。
         Container c = this.getContentPane();
-        c.setBackground(Color.WHITE);//设置背景颜色。
-        username_Label = new JLabel("User name:");    //创建"用户名"标签。
-        username_Label.setBounds(70, 60, 50, 20);    //设置"用户名"标签位置。
-        c.add(username_Label);    //添加"用户名"标签。
+        c.setBackground(Color.WHITE);
+        username_Label = new JLabel("User name:");
+        username_Label.setBounds(75, 60, 80, 20);
+        c.add(username_Label);
 
-        username_Text = new JTextField();    //创建"用户名"文本域。
-        username_Text.setBounds(180, 60, 120, 20);    //设置"用户名"文本域位置。
-        username_Text.grabFocus();//获得光标。
-        c.add(username_Text);    //添加"用户名"文本域。
+        username_Text = new JTextField();
+        username_Text.setBounds(170, 60, 120, 20);
+        username_Text.grabFocus();
+        c.add(username_Text);
 
-        password_Label = new JLabel("Password:");    //创建"密码"标签。
-        password_Label.setBounds(100, 140, 50, 20);
-        c.add(password_Label);    //添加"密码"标签。
+        password_Label = new JLabel("Password:");
+        password_Label.setBounds(75, 135, 80, 20);
+        c.add(password_Label);
 
-        password_Text = new JPasswordField();    //创建"密码"文本域。
-        password_Text.setBounds(160, 140, 120, 20);    //设置"密码"文本域位置。
-        c.add(password_Text);    //添加"密码"文本域。
+        password_Text = new JPasswordField();
+        password_Text.setBounds(170, 135, 120, 20);
+        c.add(password_Text);
 
-        login_Button = new JButton("Login");    //创建"登录"按钮。
-        login_Button.setBounds(100, 210, 60, 20);    //设置"登录"按钮位置。
-        //注册"登录"按钮事件监听。
+        login_Button = new JButton("Login");
+        login_Button.setBounds(100, 210, 60, 20);
+
         login_Button.addActionListener(new ActionListener() {
 
             @Override
@@ -69,7 +69,7 @@ public class LoginFrame extends JFrame {
                     JOptionPane.showMessageDialog(jf, "input your password please~", "", JOptionPane.WARNING_MESSAGE);
                     return;
                 }else{
-                    jf.dispose();    //当前窗口关闭
+                    jf.dispose();
                     MainFrame mainFrame = new MainFrame();    //go to main page
                 }
 
@@ -77,26 +77,26 @@ public class LoginFrame extends JFrame {
 
             }
         });
-        c.add(login_Button);    //添加"登录"按钮 。
+        c.add(login_Button);
 
 
-        register_Button = new JButton("注册");    //创建"注册"按钮。
-        register_Button.setBounds(250, 210, 60, 20);    //设置"注册"按钮位置。
-        //注册"注册"按钮事件监听。
+        register_Button = new JButton("Register");
+        register_Button.setBounds(250, 210, 60, 20);
+
         register_Button.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                jf.dispose();    //当前窗口关闭。
-                StudentSystemRegisterFrame studentSystemRegisterFrame = new StudentSystemRegisterFrame();    //打开注册界面
+                jf.dispose();
+                RegisterFrame registerFrame = new RegisterFrame();
 
             }
         });
-        c.add(register_Button);    //添加"注册"按钮。
+        c.add(register_Button);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);    //设置大小不可改变。
-        WindowUtil.setFrameCenter(this);//设置窗口居中。
+        this.setResizable(false);
+        WindowUtil.setFrameCenter(this);
         try {
             Image img = ImageIO.read(this.getClass().getResource("/2.png"));
             this.setIconImage(img);
@@ -109,9 +109,10 @@ public class LoginFrame extends JFrame {
         this.setVisible(true);    //设置窗体可见。
     }
 
-    //重置
-    public void Reset() {
+
+    public void Reset(){
         username_Text.setText("");
         password_Text.setText("");
     }
+
 }

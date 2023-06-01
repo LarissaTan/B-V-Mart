@@ -19,7 +19,7 @@ import javax.swing.JMenuItem;
 //主界面
 public class MainFrame extends JFrame {
     private JMenuBar menuBar;    //应用菜单条。
-    private JMenu student_Management;    //"学生管理"菜单。
+    private JMenu product_menu;    //"学生管理"菜单。
     private JMenu score_Management;    //"成绩管理"菜单。
     private JMenu personal_Management;    //"个人管理"菜单。
     private JMenuItem add_Student;    //"添加学生"菜单项。
@@ -36,13 +36,13 @@ public class MainFrame extends JFrame {
 
 
     public MainFrame() {
-        super("学生成绩管理系统,欢迎你" + "xxx");
+        super("Welcome to B-V mart, " + "xxx ! !");
         this.jf = this;
-        menuBar = new JMenuBar();    //创建菜单条。
-        this.setJMenuBar(menuBar);    //添加菜单条。
+        menuBar = new JMenuBar();
+        this.setJMenuBar(menuBar);
 
-        student_Management = new JMenu("学生管理");    //创建"学生管理"菜单。
-        menuBar.add(student_Management);    //添加"学生管理"菜单。
+        product_menu = new JMenu("Marts");    //创建"学生管理"菜单。
+        menuBar.add(product_menu);    //添加"学生管理"菜单。
 
         add_Student = new JMenuItem("添加学生");    //创建"添加学生"菜单项。
         //注册"添加学生"菜单项事件监听
@@ -54,7 +54,7 @@ public class MainFrame extends JFrame {
                 AddStudentFrame addStudentFrame = new AddStudentFrame(jf, "添加学生", true);
             }
         });
-        student_Management.add(add_Student);    //添加"添加学生"菜单项。
+        product_menu.add(add_Student);    //添加"添加学生"菜单项。
 
         query_Student = new JMenuItem("查询学生信息");    //创建"查询学生"菜单项。
         //注册"查询学生"菜单项事件监听。
@@ -66,7 +66,7 @@ public class MainFrame extends JFrame {
 
             }
         });
-        student_Management.add(query_Student);    //添加"查询学生信息"菜单项。
+        product_menu.add(query_Student);    //添加"查询学生信息"菜单项。
 
         modify_Student = new JMenuItem("修改学生信息");    //创建"修改学生信息"菜单项。
         //注册"修改学生信息"菜单项事件监听
@@ -78,7 +78,7 @@ public class MainFrame extends JFrame {
 
             }
         });
-        student_Management.add(modify_Student);    //添加"修改学生"菜单项。
+        product_menu.add(modify_Student);    //添加"修改学生"菜单项。
 
         delete_Student = new JMenuItem("删除学生");    //创建"删除学生"菜单项。
         //注册"删除学生"按钮事件监听
@@ -90,7 +90,7 @@ public class MainFrame extends JFrame {
 
             }
         });
-        student_Management.add(delete_Student);    //添加"删除学生"菜单项.
+        product_menu.add(delete_Student);    //添加"删除学生"菜单项.
 
         score_Management = new JMenu("成绩管理");    //创建"成绩管理"菜单。
         menuBar.add(score_Management);    //添加"成绩管理"菜单。
@@ -145,8 +145,8 @@ public class MainFrame extends JFrame {
         personal_Management = new JMenu("个人管理");    //创建"个人管理"菜单。
         menuBar.add(personal_Management);    //添加"个人管理"菜单。
 
-        change_Password = new JMenuItem("修改密码");    //创建"修改密码"菜单项。
-        //注册"修改密码"菜单项事件监听
+        change_Password = new JMenuItem("Reset Password");
+
         change_Password.addActionListener(new ActionListener() {
 
             @Override
@@ -154,26 +154,26 @@ public class MainFrame extends JFrame {
 
             }
         });
-        personal_Management.add(change_Password);    //添加"修改密码"菜单项。
+        personal_Management.add(change_Password);
 
-        logout = new JMenuItem("退出登录");    //创建"退出登录"菜单项。
-        //注册"退出登录"菜单项时间监听
+        logout = new JMenuItem("Log out");
+
         logout.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                jf.dispose();    //关闭当前窗口
+                jf.dispose();
 
-                LoginFrame frame = new LoginFrame();    //打开登陆界面
+                LoginFrame frame = new LoginFrame();
 
             }
         });
-        personal_Management.add(logout);    //添加"退出登录"菜单项。
+        personal_Management.add(logout);
 
         this.setSize(578, 400);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-        WindowUtil.setFrameCenter(this);//设置窗体居中。
+        WindowUtil.setFrameCenter(this);
         ImagePanel imagePanel = new ImagePanel();
         setContentPane(imagePanel);
 
@@ -187,52 +187,8 @@ public class MainFrame extends JFrame {
         }
 
 
-        this.setVisible(true);//设置窗体可见。
-        this.addWindowListener(new WindowListener() {
+        this.setVisible(true);
 
-            @Override
-            public void windowOpened(WindowEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void windowIconified(WindowEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void windowClosing(WindowEvent arg0) {
-                // TODO Auto-generated method stub
-
-
-            }
-
-            @Override
-            public void windowClosed(WindowEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void windowActivated(WindowEvent arg0) {
-                // TODO Auto-generated method stub
-
-            }
-        });
     }
 
 
