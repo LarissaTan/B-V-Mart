@@ -120,7 +120,7 @@ public class StudentSystemLoginFrame extends JFrame {
         this.setResizable(false);    //设置大小不可改变。
         WindowUtil.setFrameCenter(this);//设置窗口居中。
         try {
-            Image img = ImageIO.read(this.getClass().getResource("/2.png"));
+            Image img = ImageIO.read(this.getClass().getResource("/com/example/studentsystem/image/2.png"));
             this.setIconImage(img);
 
         } catch (IOException e1) {

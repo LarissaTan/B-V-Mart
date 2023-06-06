@@ -112,7 +112,7 @@ public class RegisterFrame extends JFrame {
         this.setResizable(false);
         WindowUtil.setFrameCenter(this);
         try {
-            Image img = ImageIO.read(this.getClass().getResource("/2.png"));
+            Image img = ImageIO.read(this.getClass().getResource("/com/example/clientsystem/image/2.png"));
             this.setIconImage(img);
 
         } catch (IOException e1) {

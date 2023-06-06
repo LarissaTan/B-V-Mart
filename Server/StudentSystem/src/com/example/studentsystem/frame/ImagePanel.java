@@ -11,7 +11,7 @@ public class ImagePanel extends JPanel {
     private Image img;
 
     public ImagePanel() {
-        icon = new ImageIcon(StudentSystemMainFrame.class.getResource("/1.png"));
+        icon = new ImageIcon(StudentSystemMainFrame.class.getResource("/com/example/studentsystem/image/1.png"));
         img = icon.getImage();
     }
 
