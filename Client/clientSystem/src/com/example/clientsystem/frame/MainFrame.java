@@ -33,6 +33,7 @@ public class MainFrame extends JFrame {
 
         product_menu = new JMenu("Marts");
         cart = new JMenu("Shopping Cart");
+
         menuBar.add(cart);
         menuBar.add(product_menu);
 
@@ -77,12 +78,13 @@ public class MainFrame extends JFrame {
 
         change_Password = new JMenuItem("Reset Password");
 
-        change_Password.addActionListener(new ActionListener() {
 
+        change_Password.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                testFrame frame = new testFrame(jf, "添加学生成绩", true);
             }
+
         });
         chat.add(change_Password);
 
