@@ -1,4 +1,4 @@
-package com.example.studentsystem.run;
+package com.example.studentsystem;
 
 import com.example.studentsystem.frame.StudentSystemLoginFrame;
 

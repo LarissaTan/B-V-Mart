@@ -1,4 +1,4 @@
-package com.example.clientsystem.run;
+package com.example.clientsystem;
 
 import com.example.clientsystem.frame.LoginFrame;
 

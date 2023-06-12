@@ -183,7 +183,7 @@ public class StudentSystemMainFrame extends JFrame {
         setContentPane(imagePanel);
 
         try {
-            Image img = ImageIO.read(this.getClass().getResource("/2.png"));
+            Image img = ImageIO.read(this.getClass().getResource("/com/example/studentsystem/image/2.png"));
             this.setIconImage(img);
 
         } catch (IOException e1) {
