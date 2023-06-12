@@ -3,6 +3,8 @@ package com.example.clientsystem.frame;
 
 import com.example.clientsystem.util.WindowUtil;
 
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 //主界面
 public class MainFrame extends JFrame {
@@ -25,6 +28,8 @@ public class MainFrame extends JFrame {
     private JMenuItem logout;
     private JFrame jf;
 
+    private JPanel mart_card;
+
 
     public MainFrame() {
         super("Welcome to B-V mart, " + "xxx ! !");
@@ -32,11 +37,23 @@ public class MainFrame extends JFrame {
         menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
 
+
+
+
         product_menu = new JMenu("Marts");
         cart = new JMenu("Shopping Cart");
         menuBar.add(cart);
         menuBar.add(product_menu);
 
+        // 创建CardView的面板
+        mart_card = new JPanel(new CardLayout());
+        product_menu.add(mart_card);
+
+        // 创建一个CardView面板并添加到cardPanel中
+        JPanel martCardView = new JPanel();
+        martCardView.setBackground(Color.WHITE);
+        // 在这里添加CardView中的其他组件
+        mart_card.add(martCardView, "martCardView");
 
 
 
