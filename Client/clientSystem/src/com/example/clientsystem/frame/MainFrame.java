@@ -1,23 +1,19 @@
 package com.example.clientsystem.frame;
 
-
+import com.example.clientsystem.frame.ImagePanel;
+import com.example.clientsystem.frame.LoginFrame;
 import com.example.clientsystem.util.WindowUtil;
 
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
+import javax.swing.*;
 
-//主界面
+
 public class MainFrame extends JFrame {
     private JMenuBar menuBar;
     private JMenu product_menu;
@@ -27,9 +23,7 @@ public class MainFrame extends JFrame {
     private JMenuItem change_Password;
     private JMenuItem logout;
     private JFrame jf;
-
-    private JPanel mart_card;
-
+    private JPanel cardPanel;
 
     public MainFrame() {
         super("Welcome to B-V mart, " + "xxx ! !");
@@ -37,25 +31,46 @@ public class MainFrame extends JFrame {
         menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
 
-
-
-
         product_menu = new JMenu("Marts");
         cart = new JMenu("Shopping Cart");
         menuBar.add(cart);
         menuBar.add(product_menu);
 
         // 创建CardView的面板
-        mart_card = new JPanel(new CardLayout());
-        product_menu.add(mart_card);
+        cardPanel = new JPanel(new CardLayout());
 
         // 创建一个CardView面板并添加到cardPanel中
         JPanel martCardView = new JPanel();
+        martCardView.setLayout(new GridBagLayout());
         martCardView.setBackground(Color.WHITE);
+
+        JLabel descriptionLabel = new JLabel("Welcome to B-V mart!");
+        descriptionLabel.setFont(new Font("Arial", Font.BOLD, 16)); // 设置字体样式和大小
+
+// 设置组件在网格中的位置和大小
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.gridx = 0; // 列索引
+        gbc.gridy = 0; // 行索引
+        gbc.gridwidth = 1; // 组件所占列数
+        gbc.gridheight = 1; // 组件所占行数
+        gbc.anchor = GridBagConstraints.CENTER; // 组件在单元格中的对齐方式
+        gbc.fill = GridBagConstraints.NONE; // 组件在单元格中的填充方式
+        martCardView.add(descriptionLabel, gbc);
+
+
+        // 创建GridBagConstraints对象，并设置边距
+        gbc = new GridBagConstraints();
+        gbc.insets = new Insets(20, 20, 20, 20); // 设置上、左、下、右边距
+
         // 在这里添加CardView中的其他组件
-        mart_card.add(martCardView, "martCardView");
+        // ...
 
+        // 添加martCardView到cardPanel中
+        cardPanel.add(martCardView, "martCardView");
 
+        // 将cardPanel添加到菜单中
+        product_menu.add(cardPanel);
 
         chat = new JMenu("Customer Service");
         menuBar.add(chat);
@@ -93,18 +108,14 @@ public class MainFrame extends JFrame {
         setContentPane(imagePanel);
 
         try {
-            Image img = ImageIO.read(this.getClass().getResource("/com/example/clientsystem/image/2.png"));
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("com/example/clientsystem/image/2.png");
+            Image img = ImageIO.read(inputStream);
             this.setIconImage(img);
-
         } catch (IOException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
 
 
         this.setVisible(true);
-
     }
-
-
 }
